@@ -1,0 +1,79 @@
+<div class="container">
+    <div class="overlay"></div>
+    
+    <div class="reveal-wrapper">
+      
+      <div class="content" *ngIf="!accepted">
+        <h1 class="title">Hello Miss Divya Thakur 
+            <img src="assets/divya_2.jpg" class="title-img" alt="❤️">
+        </h1>
+        <h2 class="subtitle">With lots of Love and lots of sorry for not asking earlier, will you be my Valentine ??</h2>
+
+  
+        <div class="buttons">
+          <button class="yes" (click)="sayYes()">YES 💖</button>
+  
+          <button
+            class="no"
+            [style.left.px]="noX"
+            [style.top.px]="noY"
+            (mouseenter)="moveNo()"
+            (touchstart)="moveNo()"
+          >
+            NO 🙈
+          </button>
+        </div>
+      </div>
+  
+      <div class="accepted" *ngIf="accepted">
+  
+        <div class="step-container" *ngIf="!showDateOptions">
+          <h1 class="title-of-yes">Thanks a lot for saying yes D 💘</h1>
+      
+          <p class="paragraph-of-yes">
+            "चाहे हालात कितने भी बुरे ही क्यों न हों, मुझे मोहब्बत है तुमसे ये भूलना मत। अब ये तोहफे देखो मुझे देने नहीं आते वो इसलिए क्योंकि लेने ही नहीं आते। खुद की पसंद से तो बस गुलाब दे सकता हूँ बाकी कुछ भी पूछ लो जवाब दे सकता हूँ। तुम्हारे सिवा कभी किसी और पर ये नज़रें उठेंगी नहीं और चलो उठ भी गयीं तो यकीन मानो टिकेंगी नहीं। हमारी मोहब्बत में हमें एक दूसरे से कोई बेफिज़ूल का वादा नहीं करना, क्योंकि इश्क करना है पर बहुत ज़्यादा नहीं करना। बस इतना करना है कि ज़िंदगी तुम्हारे साथ भी बीते और अगर कभी खुदा का मन बदल जाए तो ये ज़िंदगी तुम्हारे बाद भी बीते।"
+          </p>
+      
+          <button class="main-next-btn" (click)="goToDateSelection()">
+            Next <span>&#10145;</span>
+          </button>
+        </div>
+      
+        <div class="step-container" *ngIf="showDateOptions">
+          <div class="date-section" *ngIf="!selectedDate">
+            <h3 class="date-title">Toh... Aapne Yes bola ! <br> Aapki choice, kya karna hai aaj ? ✨</h3>
+            <div class="date-grid">
+              <button *ngFor="let option of dateOptions" class="date-card" (click)="selectDate(option.label)">
+                <span class="date-icon">{{option.icon}}</span>
+                <span class="date-label">{{option.label}}</span>
+              </button>
+            </div>
+          </div>
+      
+          <div class="date-confirmation" *ngIf="selectedDate">
+            <p>Perfect! <strong>{{selectedDate}}</strong> it is. <br> Mast choice hai D ❤️</p>
+          
+            <div class="message-section" *ngIf="!messageSent">
+              <label for="loveNote">Would you want to write something ? ✍️</label>
+              <textarea 
+                id="loveNote" 
+                [(ngModel)]="userMessage" 
+                placeholder="Type something sweet here...">
+              </textarea>
+              <button class="send-note-btn" (click)="sendFinalMessage()">Send Note 💌</button>
+            </div>
+          
+            <div class="final-thanks" *ngIf="messageSent">
+              <p>Message received D... Love you 3000 🥰</p>
+            </div>
+          </div>
+        </div>
+      
+        <p class="source-text" *ngIf="!showDateOptions">Source: I found this on YouTube on 2022</p>
+        <div class="audio-container" *ngIf="!showDateOptions">
+          <audio controls src="assets/shayari_1.m4a"></audio>
+        </div>
+      </div>
+  
+    </div>
+  </div>
